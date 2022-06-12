@@ -33,6 +33,53 @@ module.exports = {
   getReviewsMeta,
 }
 
+/* 6.12 - 12pm BASIC working structure:
+SELECT json_build_object(
+    'product_id', (SELECT product_id FROM reviews WHERE id=5),
+    'ratings', (SELECT json_build_object(
+      1, (SELECT COUNT(value) AS "value" FROM characreviews WHERE id=5),
+      2, (SELECT COUNT(value) AS "value" FROM characreviews WHERE id=5),
+      3, (SELECT COUNT(value) AS "value" FROM characreviews WHERE id=5),
+      4, (SELECT COUNT(value) AS "value" FROM characreviews WHERE id=5)
+    )),
+    'recommended', json_build_object(
+    0, (SELECT recommended FROM reviews WHERE id=2)
+  ),
+    'characteristics', json_build_object(
+     'size', json_build_object(
+         'id', 2,
+        'value', (SELECT AVG(value) FROM characreviews WHERE characteristic_id=1)
+     ),
+      'width', json_build_object(
+         'id', 2,
+        'value', (SELECT AVG(value) FROM characreviews WHERE characteristic_id=2)
+     ),
+      'comfort', json_build_object(
+         'id', 2,
+        'value', (SELECT AVG(value) FROM characreviews WHERE characteristic_id=3)
+     ),
+      'quality', json_build_object(
+         'id', 2,
+        'value', (SELECT AVG(value) FROM characreviews WHERE review_id=4)
+     ),
+      'length', json_build_object(
+         'id', 2,
+        'value', (SELECT AVG(value) FROM characreviews WHERE review_id=5)
+     ),
+      'fit', json_build_object(
+         'id', 2,
+        'value', (SELECT AVG(value) FROM characreviews WHERE review_id=6)
+     )
+  )
+)
+*/
+
+
+
+
+
+
+
 /*
 -- SELECT json_build_object(
   --     'product_id', (SELECT product_id FROM reviews WHERE id=5),
