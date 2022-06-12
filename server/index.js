@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const { getReviews, getReviewsMeta, postReviews } = require('./models');
+const { getReviews, getReviewsMeta, postReviews, postMeta } = require('./models');
 
 const server = express();
 server.use(express.json());
@@ -18,12 +18,15 @@ server.get('/reviews', function(req, res) {
 
 server.post('/reviews', function(req,res) {
   console.log(req.data);
-  const dataObj = req.data;
-  postReviews(dataObj).then((data) => {
+  const reviewObj = req.data; //extract;
+  const metaObj = req.data; //extraxt...
+  postReviews(reviewObj).then((data) => {
     res.send(data)
   }).catch((data) => {
     res.send(data)
   })
+
+  postMeta( ) //..
 })
 
 

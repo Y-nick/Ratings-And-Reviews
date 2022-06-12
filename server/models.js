@@ -67,8 +67,12 @@ const getReviewsMeta = function (productID=2) {
 }
 
 const postReviews = function(obj) {
+  let text = `INSERT into ____ where ___ is ____`;
+  return query(text);
+}
+
+const postMeta = function(obj) {
   let text = ``;
-  const values = [];
   return query(text);
 }
 
@@ -77,6 +81,7 @@ module.exports = {
   getReviews,
   getReviewsMeta,
   postReviews,
+  postMeta,
 }
 
 /* 6.12 - 12pm BASIC working structure:
