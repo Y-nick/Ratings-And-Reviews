@@ -4,7 +4,6 @@ const { getReviews } = require('./models');
 
 const server = express();
 server.use(express.json());
-console.log('LOOGINH gerREVVS?? ', getReviews() )
 
 //---------------------------------------------
 // ROUTE ONE
@@ -19,6 +18,7 @@ server.get('/reviews', function(req, res) {
   })
 });
 
+
 server.put('/reviews', function(req,res) {
 
 })
@@ -26,6 +26,15 @@ server.put('/reviews', function(req,res) {
 //---------------------------------------------
 // ROUTE TWO
 //---------------------------------------------
+server.get('/reviews/meta', function(req, res) {
+  getReviewsMeta().then((data) => {
+    console.log('IND LOG', data)
+    res.send(data.rows[0].json_build_object);
+  }).catch(data => {
+    res.send(data)
+  })
+});
+
 
 server.listen(process.env.port, () => {
   console.log(`listening on Port: ${process.env.port}`);
