@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const { getReviews, getReviewsMeta } = require('./models');
+const { getReviews, getReviewsMeta, postReviews } = require('./models');
 
 const server = express();
 server.use(express.json());
@@ -10,30 +10,51 @@ server.use(express.json());
 //---------------------------------------------
 server.get('/reviews', function(req, res) {
   getReviews().then((data) => {
-    console.log('IND LOG', data)
     res.send(data.rows[0].json_build_object);
   }).catch(data => {
     res.send(data)
-    console.log(data)
   })
 });
 
-
-server.put('/reviews', function(req,res) {
-
+server.post('/reviews', function(req,res) {
+  console.log(req.data);
+  const dataObj = req.data;
+  postReviews(dataObj).then((data) => {
+    res.send(data)
+  }).catch((data) => {
+    res.send(data)
+  })
 })
+
 
 //---------------------------------------------
 // ROUTE TWO
 //---------------------------------------------
 server.get('/reviews/meta', function(req, res) {
   getReviewsMeta().then((data) => {
-    console.log('IND LOG', data)
     res.send(data.rows[0].json_build_object);
   }).catch(data => {
     res.send(data)
   })
 });
+
+
+//---------------------------------------------
+// ROUTE THREE
+//---------------------------------------------
+server.put('/reviews/:review_id/helpful', function(req,res) {
+
+})
+
+
+//---------------------------------------------
+// ROUTE FOUR
+//---------------------------------------------
+server.put('/reviews/:review_id/report', function(req,res) {
+
+})
+
+
 
 server.listen(process.env.port, () => {
   console.log(`listening on Port: ${process.env.port}`);
