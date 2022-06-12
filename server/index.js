@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const { getReviews } = require('./models');
+const { getReviews, getReviewsMeta } = require('./models');
 
 const server = express();
 server.use(express.json());
@@ -34,7 +34,6 @@ server.get('/reviews/meta', function(req, res) {
     res.send(data)
   })
 });
-
 
 server.listen(process.env.port, () => {
   console.log(`listening on Port: ${process.env.port}`);
