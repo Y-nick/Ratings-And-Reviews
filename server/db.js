@@ -2,10 +2,11 @@ require('dotenv').config();
 const { Pool } = require('pg');
 // guide used Client instead of pool.
 
+// switched host from local host to aws host?
 const pool = new Pool({
   user: 'yanick',
   password: '',
-  host: 'localhost',
+  host: 'http://18.216.153.175/',
   database: 'reviewsdb',
   port: 5432,
 });
