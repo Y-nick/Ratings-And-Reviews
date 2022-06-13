@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config();
+require('newrelic');
 const { getReviews, getReviewsMeta, postReviews, postMeta } = require('./models');
 
 const server = express();
@@ -9,6 +10,7 @@ server.use(express.json());
 // ROUTE ONE
 //---------------------------------------------
 server.get('/reviews', function(req, res) {
+  console.log(req.body)
   getReviews().then((data) => {
     res.send(data.rows[0].json_build_object);
   }).catch(data => {
@@ -16,8 +18,7 @@ server.get('/reviews', function(req, res) {
   })
 });
 
-server.post('/reviews', function(req,res) {
-  console.log(req.data);
+server.post('/reviews', function(req, res) {
   const reviewObj = req.data; //extract;
   const metaObj = req.data; //extraxt...
   postReviews(reviewObj).then((data) => {
