@@ -3,10 +3,12 @@ const { Pool } = require('pg');
 // guide used Client instead of pool.
 
 // switched host from local host to aws host?
+// user try postgres
+// try ubuntu @ longer aws address as host name
 const pool = new Pool({
-  user: 'yanick',
-  password: '',
-  host: '18.216.153.175',
+  user: 'postgres',
+  password: '6996',
+  host: '18.191.248.78',
   database: 'reviewsdb',
   port: 5432,
 });

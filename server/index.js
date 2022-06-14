@@ -58,7 +58,9 @@ server.put('/reviews/:review_id/report', function(req,res) {
 //
 })
 
-
+//---------------------------------------------
+// Loader Route
+//---------------------------------------------
 server.get('/loaderio-294ca2182c732f8827c0c413eca6ee2f.txt', function(req, res) {
   res.send(process.env.loader);
 });
