@@ -61,7 +61,7 @@ server.put('/reviews/:review_id/report', function(req,res) {
 //---------------------------------------------
 // Loader Route
 //---------------------------------------------
-server.get(`/${process.env.loaderRoute}`, function(req, res) {
+server.get(`/reviews/${process.env.loaderRoute}`, function(req, res) {
   res.send(process.env.loader);
 });
 
