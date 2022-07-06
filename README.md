@@ -6,6 +6,6 @@ This is the server code of a high-traffic e-commerce web application with a micr
 Stress testing has been conducted via New Relic and Loader.io on a 3 server, 1 database, 1 load-balancer configuration. This configuration achieves approximately 150,000 Request per minute, which exceeds the customer requirements for this effort. 
 
 # Future Upgrades 
-- Continue to add server instances until architecture bottleneck shifts from the server layer to the database layer
-- Scale databases to achieve maximum performance
+1. Continue to add server instances until architecture bottleneck shifts from the server layer to the database layer
+2. Scale database layer to achieve maximum performance
 
